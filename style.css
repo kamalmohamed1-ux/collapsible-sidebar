@@ -1,0 +1,124 @@
+.container {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    display: flex;
+}
+
+.sidebar{
+    background: #1f2937;
+    color: #ffffff;
+    width: 220px;
+    height: 100vh;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidebar nav a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.sidebar nav a:hover{
+    background: #374151;
+}
+
+.sidebar.collapsed {
+    width: 0;
+    min-width: 0;
+    padding: 0;
+}
+
+.sidebar.collapsed nav {
+    display: none;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.close-sidebar-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+
+.Logo {
+    width: 35px;
+    height: 35px;
+    background: #374151;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin: 10px 0 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .sidebar{
+        position: fixed;
+        left: -220px;
+        top:0;
+        height: 100%;
+        z-index: 1000;
+    }
+    .sidebar.active .close-sidebar-btn {
+        display: block;
+    }
+
+    .toggle-btn {
+        position: fixed;
+        top: 20px;
+        left: 10px;
+        transition: left 0.3s;
+    }
+    .sidebar.active ~ .content .toggle-btn {
+        left: 230px;
+    }
+}
+.sidebar.active {
+    left: 0;
